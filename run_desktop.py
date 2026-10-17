@@ -7,7 +7,7 @@ import tempfile
 import time
 import webbrowser
 
-import streamlit  # noqa: F401  (kept so PyInstaller detects and bundles Streamlit)
+import streamlit  
 
 APP_TITLE = "Blend 0.1"
 
@@ -69,7 +69,7 @@ def stop(proc):
             proc.kill()
 
 
-# ------------------------------------------------------------------ server mode
+# ------------------------------------------------------------------ server
 def run_server(port):
     skip_email_prompt()
     sys.argv = [
@@ -79,7 +79,7 @@ def run_server(port):
         "--global.developmentMode=false",
         f"--server.port={port}",
         "--server.address=127.0.0.1",
-        "--server.headless=true",              # our own window opens the page
+        "--server.headless=true",              # window
         "--browser.gatherUsageStats=false",
     ]
     from streamlit.web import cli as stcli
