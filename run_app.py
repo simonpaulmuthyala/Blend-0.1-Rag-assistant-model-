@@ -1,7 +1,7 @@
 import os
 import sys
 
-import streamlit  # noqa: F401  (kept so PyInstaller detects and bundles Streamlit)
+import streamlit  
 
 
 def skip_email_prompt():
@@ -16,16 +16,13 @@ def skip_email_prompt():
 
 if __name__ == "__main__":
     if getattr(sys, "frozen", False):
-        base_dir = sys._MEIPASS          # folder where PyInstaller put app.py
+        base_dir = sys._MEIPASS         
     else:
         base_dir = os.path.dirname(os.path.abspath(__file__))
 
     skip_email_prompt()
 
     app_path = os.path.join(base_dir, "app.py")
-
-    # Same as typing:  streamlit run app.py ...
-    # Not headless, so Streamlit opens your browser automatically.
     sys.argv = [
         "streamlit",
         "run",
